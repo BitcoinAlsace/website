@@ -5,7 +5,7 @@ category: meetup
 image: "/images/events/meetup-2026-03.webp"
 description: "Le 2e mercredi de mars : on décortique la preuve de travail (Proof of Work) et la question de sa consommation énergétique."
 location: "Strasbourg (lieu annoncé sur Telegram)"
-registrationUrl: "https://t.me/bitcoinalsace"
+registrationUrl: "https://t.me/+tCVz3Z4dTkhjMzZk"
 free: true
 ---
 

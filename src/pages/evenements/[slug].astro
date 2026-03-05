@@ -30,7 +30,7 @@ const isUpcoming = event.data.date >= new Date();
   title={event.data.title}
   description={event.data.description ?? `${event.data.title} — Bitcoin Alsace`}
 >
-  <PageHero title={event.data.title}>
+  <PageHero title={event.data.title} image={event.data.image} imageAlt={event.data.title}>
     <div class="event-meta-top" slot="before-title">
       <span class={`badge badge-${event.data.category}`}>{categoryLabels[event.data.category]}</span>
       {isUpcoming && <span class="badge-upcoming">À venir</span>}
@@ -127,7 +127,7 @@ const isUpcoming = event.data.date >= new Date();
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.95rem;
-    color: var(--gray);
+    color: var(--page-hero-muted-color, var(--gray));
   }
   .free-badge {
     background: var(--orange-light);
