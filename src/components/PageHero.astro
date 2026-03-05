@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="page-hero">
+  <div class="container">
+    <slot name="before-title" />
+    <h1>{title}</h1>
+    {description && <p>{description}</p>}
+    <slot />
+  </div>
+</div>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--orange-light), var(--white));
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 0;
+  }
+  .page-hero h1 { margin-bottom: 0.5rem; }
+  .page-hero p { color: var(--gray); font-size: 1.05rem; }
+</style>

@@ -1,0 +1,165 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import PageBanner from "../components/PageBanner.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Layout
+  title="L'association"
+  description="Bitcoin Alsace est une association loi 1908, à but non lucratif, régie par le droit local alsacien-mosellan."
+>
+  <PageHero title="L'association" description="Bitcoin Alsace — association loi 1908 (statut Alsace-Moselle)" />
+
+  <PageBanner src="/images/pages/association_.webp" alt="Bitcoin Alsace" />
+
+  <div class="page-content">
+    <div class="container content-layout">
+      <article class="prose main-content">
+        <h2>Qui sommes-nous ?</h2>
+        <p>
+          Bitcoin Alsace est une association loi 1908, à but non lucratif, régie
+          par le droit local alsacien-mosellan, dont l'objectif est de
+          contribuer à l'éducation financière et numérique des citoyens, ainsi
+          qu'à la réflexion citoyenne et institutionnelle sur les
+          cryptomonnaies, en particulier Bitcoin.
+        </p>
+
+        <h2>Notre mission</h2>
+        <ul>
+          <li>
+            Accompagner la réflexion citoyenne et institutionnelle sur les
+            cryptomonnaies et monnaies décentralisées, en particulier Bitcoin
+          </li>
+          <li>
+            Contribuer à l'éducation financière et numérique des citoyen·ne·s
+          </li>
+          <li>
+            Contribuer aux écosystèmes locaux éthique et responsable des actifs
+            numériques
+          </li>
+          <li>
+            Servir d'interface entre collectivités territoriales, recherche
+            académique et acteurs économiques
+          </li>
+        </ul>
+
+        <h2>Nos principes fondamentaux</h2>
+        <blockquote>
+          Bitcoin Alsace n’exerce aucune activité réglementée au sens du Code monétaire et financier. Nos actions se limitent à l’éducation, la sensibilisation, la promotion, la recherche et la réflexion sociétale et institutionnelle.
+        </blockquote>
+        <ul>
+          <li>
+            <strong>Responsabilité</strong> — Un engagement responsable avec les technologies
+            financières
+          </li>
+          <li>
+            <strong>Sensibilisation</strong> — La prise de conscience des impacts
+            économiques locaux dans une perspective globale
+          </li>
+          <li>
+            <strong>Protection</strong> — La protection des populations vulnérables
+          </li>
+          <li>
+            <strong>Rigueur</strong> — La rigueur académique et intellectuelle
+          </li>
+          <li><strong>Ouverture</strong> — Des méthodologies pluralistes</li>
+          <li>
+            <strong>Exclusion</strong> — L'interdiction explicite de tout conseil
+            spéculatif ou en investissement
+          </li>
+          <li>
+            <strong>Absence</strong> — Un positionnement laïc et apolitique
+          </li>
+        </ul>
+      </article>
+
+      <aside class="sidebar">
+        <div class="card sidebar-card">
+          <h3>Notre Bureau &amp; Conseil d'Administration</h3>
+          <dl class="members-list">
+            <dt>Président</dt><dd>Gérard</dd>
+            <dt>Secrétaire</dt><dd>Caroline</dd>
+            <dt>Trésorier</dt><dd>Julien Meyer (aka trigger)</dd>
+          </dl>
+          <dl class="members-list" style="margin-top:1rem;">
+            <dt>Assesseur</dt><dd>Magenta</dd>
+            <dt>Assesseur</dt><dd>Al1Br3j</dd>
+            <dt>Assesseur</dt><dd>Piotr</dd>
+            <dt>Assesseur</dt><dd>Oleksandra</dd>
+            <dt>Assesseur</dt><dd>Bertrand</dd>
+          </dl>
+        </div>
+
+        <div class="card sidebar-card" style="text-align: center;">
+          <h3>Soutenir l'association</h3>
+          <p style="font-size:0.9rem;color:var(--gray);margin-bottom:1rem;">
+            Participez à la faire vivre en rejoignant Bitcoin Alsace !
+          </p>
+          <a href="/adherer" class="btn btn-primary" style="display: block; text-decoration: none;">
+            Adhérer
+          </a>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Nous suivre</h3>
+          <SocialLinks />
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>
+
+<style>
+
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .content-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sidebar-card {
+    margin-bottom: 1.5rem;
+  }
+  .sidebar-card h3 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--orange);
+    font-size: 1rem;
+  }
+
+  .members-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1rem;
+  }
+  .members-list dt {
+    font-weight: 600;
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+  .members-list dd {
+    font-weight: 500;
+  }
+
+  .simple-list {
+    list-style: none;
+    padding: 0;
+  }
+  .simple-list li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .simple-list li:last-child {
+    border-bottom: none;
+  }
+</style>

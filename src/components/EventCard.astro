@@ -1,0 +1,144 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  endDate?: Date;
+  category: 'meetup' | 'conference' | 'actu' | 'autre';
+  image?: string;
+  slug: string;
+}
+
+const { title, date, endDate, category, image, slug } = Astro.props;
+
+const categoryLabels = {
+  meetup: '🤝 Bitcoin Meetup',
+  conference: '🗣️ Conférence',
+  actu: '🎭 Humeur du jour',
+  autre: '📅 Événement',
+};
+
+const categoryGradients = {
+  meetup: 'linear-gradient(135deg, #f7931a 0%, #d4780e 100%)',
+  conference: 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+  actu: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+  autre: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+};
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const isUpcoming = date >= new Date();
+---
+<a href={`/evenements/${slug}`} class={`event-card ${isUpcoming ? 'upcoming' : 'past'}`}>
+  <div class="event-image">
+    {image
+      ? <img src={image} alt={title} loading="lazy" />
+      : <div class="event-placeholder" style={`background: ${categoryGradients[category]}`}>
+          <span class="placeholder-symbol">₿</span>
+        </div>
+    }
+    {isUpcoming && <span class="badge-upcoming">À venir</span>}
+  </div>
+
+  <div class="event-body">
+    <span class={`badge badge-${category}`}>{categoryLabels[category]}</span>
+    <h3 class="event-title">{title}</h3>
+    <time class="event-date" datetime={date.toISOString()}>
+      {formatDate(date)}{endDate ? ` – ${formatDate(endDate)}` : ''}
+    </time>
+  </div>
+</a>
+
+<style>
+  .event-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--white);
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+    color: inherit;
+  }
+  .event-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .event-card.past { opacity: 1; }
+
+  /* Image area */
+  .event-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .event-card:hover .event-image img {
+    transform: scale(1.04);
+  }
+  .event-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .placeholder-symbol {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 900;
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* "À venir" badge overlaid on image */
+  .badge-upcoming {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  :global([data-theme="dark"]) .badge-upcoming {
+    background: #0d3322;
+    color: #4ade80;
+  }
+
+  /* Text area */
+  .event-body {
+    padding: 1rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .event-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.35;
+    margin: 0;
+  }
+  .event-card:hover .event-title {
+    color: var(--orange);
+  }
+
+  .event-date {
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+</style>

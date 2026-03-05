@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventCard from '../components/EventCard.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events', ({ data }) => !data.draft);
+const sortedEvents = allEvents.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const upcomingEvents = sortedEvents.filter(e => e.data.date >= new Date());
+const pastEvents = sortedEvents.filter(e => e.data.date < new Date()).slice(0, 6);
+---
+<Layout title="Accueil" description="Nous accompagnons la réflexion citoyenne et institutionnelle sur les cryptomonnaies — en particulier Bitcoin.">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>L'association des <span>Bitcoiners Alsaciens</span></h1>
+        <p class="hero-lead">
+          Nous accompagnons la réflexion citoyenne et institutionnelle sur les cryptomonnaies — en particulier Bitcoin.
+        </p>
+        <p class="hero-sub">
+          Nous œuvrons pour une éducation financière et numérique, contribuant à un écosystème local éthique et responsable,
+          au service des citoyens, collectivités, recherche et acteurs économiques, sans but lucratif.
+        </p>
+        <p class="hero-meetup">
+          🤝 Rejoignez-nous chaque <strong>2e mercredi du mois</strong> pour le Bitcoin Meetup — <a href="/evenements">gratuit, sans inscription</a>.
+        </p>
+        <div class="hero-actions">
+          <a href="/adherer" class="btn btn-primary">Rejoindre l'association</a>
+          <a href="/evenements" class="btn btn-outline">Voir les événements</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events section -->
+  <section class="events-section">
+    <div class="container">
+
+      {upcomingEvents.length > 0 && (
+        <div class="events-block">
+          <h2 class="section-title">🔮 Évènements <span>à venir</span></h2>
+          <div class="events-grid">
+            {upcomingEvents.map(event => (
+              <EventCard
+                title={event.data.title}
+                date={event.data.date}
+                endDate={event.data.endDate}
+                category={event.data.category}
+                image={event.data.image}
+                slug={event.id}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {pastEvents.length > 0 && (
+        <div class="events-block">
+          <h2 class="section-title">Publications <span>récentes</span></h2>
+          <div class="events-grid">
+            {pastEvents.map(event => (
+              <EventCard
+                title={event.data.title}
+                date={event.data.date}
+                endDate={event.data.endDate}
+                category={event.data.category}
+                image={event.data.image}
+                slug={event.id}
+              />
+            ))}
+          </div>
+          <div style="text-align:center; margin-top:2rem;">
+            <a href="/evenements" class="btn btn-outline">Tous les évènements →</a>
+          </div>
+        </div>
+      )}
+
+    </div>
+  </section>
+
+  <!-- Contact strip -->
+  <section class="contact-strip">
+    <div class="container">
+      <h2 class="section-title">Nous <span>suivre</span></h2>
+      <SocialLinks />
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--orange-light) 0%, var(--white) 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 0;
+  }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  .hero-text { flex: 1; }
+  .hero-text h1 { font-size: 2.5rem; margin-bottom: 1rem; font-family: Georgia, 'Palatino Linotype', Palatino, serif; }
+  .hero-text h1 span { color: var(--orange); }
+  .hero-lead { font-size: 1.1rem; color: var(--gray); margin-bottom: 0.75rem; max-width: 520px; }
+  .hero-sub { font-size: 0.95rem; color: var(--gray); margin-bottom: 0.75rem; max-width: 520px; }
+  .hero-meetup { font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 520px; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  @media (max-width: 768px) {
+    .hero { padding: 2.5rem 0; }
+    .hero-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .hero-text h1 { font-size: 1.8rem; }
+    .hero-actions { justify-content: center; }
+  }
+
+  /* Events */
+  .events-section { padding: 3.5rem 0; }
+  .events-block { margin-bottom: 3rem; }
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Contact */
+  .contact-strip {
+    padding: 2.5rem 0;
+    background: var(--orange-light);
+  }
+</style>

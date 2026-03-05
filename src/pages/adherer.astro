@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import PageBanner from '../components/PageBanner.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Layout
+  title="Adhérer"
+  description="En tant que membre de Bitcoin Alsace, vous contribuerez à faire rayonner les valeurs que nous défendons : éducation, liberté financière, protection de la vie privée et droit à la self-custody."
+>
+  <PageHero title="Adhérer" description="Rejoindre Bitcoin Alsace" />
+
+  <PageBanner src="/images/pages/adherer-2.webp" alt="Adhérer à Bitcoin Alsace" />
+
+  <div class="page-content">
+    <div class="container content-layout">
+
+      <article class="prose main-content">
+
+        <p class="intro">
+          En tant que membre de l'association, vous contribuerez à nos réflexions et à faire rayonner
+          les valeurs que nous défendons : <strong>éducation, liberté financière, protection de la vie
+          privée et droit à la self-custody</strong>.
+        </p>
+
+        <h2>Pourquoi adhérer ?</h2>
+        <div class="reasons-grid">
+          <div class="reason-card card">
+            <span class="reason-icon">📚</span>
+            <h3>Promouvoir l'éducation</h3>
+            <p>Participez activement aux initiatives éducatives sur Bitcoin et contribuez à diffuser des connaissances fiables.</p>
+          </div>
+          <div class="reason-card card">
+            <span class="reason-icon">🗽</span>
+            <h3>Défendre les libertés financières</h3>
+            <p>Soutenez les principes de souveraineté financière individuelle, de protection de la vie privée et d'auto-conservation.</p>
+          </div>
+          <div class="reason-card card">
+            <span class="reason-icon">🌐</span>
+            <h3>Contribuer à la décentralisation</h3>
+            <p>Aidez à promouvoir les systèmes financiers et technologiques décentralisés au service du bien commun.</p>
+          </div>
+        </div>
+
+        <h2>Vos Missions en tant que Membre</h2>
+        <ul>
+          <li>Participer aux réunions (minimum 1 par an)</li>
+          <li>Voter lors des assemblées générales</li>
+          <li>Respecter les règles de communication</li>
+        </ul>
+
+        <h2>Impact Concret</h2>
+        <ul>
+          <li>Convaincre les commerçants locaux d'accepter Bitcoin</li>
+          <li>Organiser des événements, meetups et conférences</li>
+          <li>Promouvoir l'éducation autour de Bitcoin</li>
+        </ul>
+
+        <h2>Deux façons de soutenir</h2>
+        <div class="support-grid">
+          <div class="card support-card">
+            <h3>Adhérer à l'association</h3>
+            <div class="support-price">25€ <span>annuels</span></div>
+            <p>ou équivalent Bitcoin</p>
+            <a href="contact" class="btn btn-primary">
+              Nous contacter
+            </a>
+          </div>
+          <div class="card support-card">
+            <h3>Faire un don libre</h3>
+            <div class="support-price">⚡ <span>Lightning</span></div>
+            <p>Idéal même pour des micro-dons.</p>
+            <a href="/donation" class="btn btn-outline">
+              Page de don 🧡
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <aside class="sidebar">
+        <div class="card sidebar-card">
+          <h3>Nous suivre</h3>
+          <SocialLinks />
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+  }
+
+  .intro { font-size: 1.05rem; margin-bottom: 2rem; }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 700px) {
+    .reasons-grid { grid-template-columns: 1fr; }
+  }
+  .reason-card { text-align: center; }
+  .reason-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+  .reason-card h3 { margin-bottom: 0.5rem; font-size: 1rem; }
+  .reason-card p { font-size: 0.875rem; color: var(--gray); }
+
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 600px) {
+    .support-grid { grid-template-columns: 1fr; }
+  }
+  .support-card { text-align: center; padding: 2rem 1.5rem; }
+  .support-card h3 { margin-bottom: 1rem; }
+  .support-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .support-price span { font-size: 1rem; font-weight: 500; color: var(--gray); }
+  .support-card p { color: var(--gray); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+  .sidebar-card { margin-bottom: 1.5rem; }
+  .sidebar-card h3 {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+</style>

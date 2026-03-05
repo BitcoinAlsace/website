@@ -1,0 +1,571 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Association Bitcoin Alsace — éducation financière et numérique autour de Bitcoin en Alsace.",
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Bitcoin Alsace</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- RSS feed -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Bitcoin Alsace — Événements"
+      href="/rss.xml"
+    />
+    <!-- Prevent flash of unstyled theme -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo" aria-label="Bitcoin Alsace — Accueil">
+          <img src="/logo-text-black.webp" alt="Bitcoin Alsace" height="44" class="logo-light" />
+          <img src="/logo-text-white.webp" alt="Bitcoin Alsace" height="44" class="logo-dark" />
+        </a>
+
+        <input
+          type="checkbox"
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-hidden="true"
+        />
+        <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="main-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/lassociation">L'association</a></li>
+            <li><a href="/evenements">Évènements</a></li>
+            <li><a href="/adherer">Adhérer</a></li>
+            <li class="has-dropdown">
+              <button class="dropdown-toggle" aria-expanded="false"
+                >Ressources ▾</button
+              >
+              <ul class="dropdown">
+                <li><a href="/bibliotheque">Bibliothèque</a></li>
+                <li>
+                  <a
+                    href="https://planb.academy/fr/"
+                    rel="noopener noreferrer"
+                    target="_blank">Plan ₿ Academy</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/commercants-en-alsace">Commerçants</a></li>
+            <li><a href="/donation" class="btn btn-primary">Donation 🤍</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle-btn" aria-label="Basculer le mode sombre" title="Basculer le thème">
+          <!-- Sun icon (shown in dark mode to switch back to light) -->
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon icon (shown in light mode to switch to dark) -->
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <img src="/logo-full-white.webp" alt="Bitcoin Alsace" height="36" />
+          </a>
+          <p>
+            Association loi 1908 (Alsace-Moselle)<br />dédiée à l'éducation
+            financière et numérique.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/lassociation">L'association</a></li>
+            <li><a href="/evenements">Évènements</a></li>
+            <li><a href="/adherer">Adhérer</a></li>
+            <li><a href="/bibliotheque">Bibliothèque</a></li>
+            <li><a href="/commercants-en-alsace">Commerçants</a></li>
+            <li><a href="/donation">Donation</a></li>
+            <li><a href="/conference-annuelle">Conférence Annuelle</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Nous suivre</h4>
+          <ul class="social-links">
+            <li>
+              <a href="https://t.me/+tCVz3Z4dTkhjMzZk" rel="noopener noreferrer" target="_blank" class="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="footer-social-icon">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                Telegram
+              </a>
+            </li>
+            <li>
+              <a href="/rss.xml" class="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="footer-social-icon">
+                  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+                </svg>
+                RSS
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            © {new Date().getFullYear()} Bitcoin Alsace
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      /* === Header === */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        height: 96px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .logo:hover { text-decoration: none; opacity: 0.85; }
+      .logo img {
+        display: block;
+        height: 60px;
+        width: auto;
+      }
+      .logo img.logo-dark { display: none; }
+      [data-theme="dark"] .logo img.logo-light { display: none; }
+      [data-theme="dark"] .logo img.logo-dark { display: block; }
+
+      /* Nav */
+      .main-nav {
+        margin-left: auto;
+      }
+      .main-nav > ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 0.25rem;
+        align-items: center;
+      }
+      .main-nav a,
+      .main-nav button {
+        display: block;
+        padding: 0.4rem 0.75rem;
+        color: var(--text);
+        font-weight: 500;
+        border-radius: var(--radius);
+        transition: background 0.15s;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+        white-space: nowrap;
+      }
+      .main-nav a:hover,
+      .main-nav button:hover {
+        background: var(--gray-light);
+        text-decoration: none;
+        color: var(--orange);
+      }
+      .main-nav .btn-primary {
+        background: var(--orange);
+        color: var(--white);
+        border: 2px solid var(--orange);
+      }
+      .main-nav .btn-primary:hover {
+        background: var(--orange-dark);
+        border-color: var(--orange-dark);
+        color: var(--white);
+      }
+
+      /* Dropdown */
+      .has-dropdown {
+        position: relative;
+      }
+      .dropdown {
+        display: none;
+        margin: 0;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        min-width: 180px;
+        flex-direction: column;
+        padding: 0.25rem;
+      }
+      .has-dropdown.is-open .dropdown {
+        display: flex;
+      }
+      .dropdown li {
+        list-style: none;
+      }
+      .dropdown a {
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+      }
+
+      /* Mobile burger */
+      .nav-toggle {
+        display: none;
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .nav-burger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 0.2s;
+      }
+
+      @media (max-width: 900px) {
+        .logo img {
+          height: 48px;
+        }
+        
+        /* Burger animation */
+        .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle:checked ~ .nav-burger span:nth-child(2) {
+          opacity: 0;
+        }
+        .nav-toggle:checked ~ .nav-burger span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-burger {
+          display: flex;
+        }
+        .main-nav {
+          display: flex;
+          position: fixed;
+          top: 96px;
+          left: -100%;
+          width: 360px;
+          max-width: 85vw;
+          height: calc(100vh - 96px);
+          background: var(--white);
+          border-right: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+          padding: 1.5rem 1.5rem;
+          margin: 0;
+          transition: left 0.3s ease-in-out;
+          overflow-y: auto;
+        }
+        .nav-toggle:checked ~ .main-nav {
+          left: 0;
+        }
+        .main-nav > ul {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-start;
+          width: 100%;
+        }
+        .main-nav a,
+        .main-nav button {
+          text-align: left;
+          width: 100%;
+          padding: 0.75rem 0.5rem;
+          font-size: 1.1rem;
+        }
+        .has-dropdown {
+          width: 100%;
+        }
+        .dropdown {
+          position: static;
+          display: none;
+          box-shadow: none;
+          border: none;
+          padding-left: 1rem;
+        }
+        .has-dropdown.is-open .dropdown {
+          display: flex;
+        }
+      }
+
+      /* === Theme toggle button === */
+      .theme-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
+      }
+      .theme-toggle-btn:hover {
+        background: var(--gray-light);
+        color: var(--orange);
+        border-color: var(--orange);
+      }
+      .theme-toggle-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+      /* Moon shown in light mode; sun shown in dark mode */
+      .theme-toggle-btn .icon-sun { display: none; }
+      .theme-toggle-btn .icon-moon { display: block; }
+      [data-theme="dark"] .theme-toggle-btn .icon-sun { display: block; }
+      [data-theme="dark"] .theme-toggle-btn .icon-moon { display: none; }
+
+      @media (max-width: 900px) {
+        .nav-burger {
+          margin-left: auto;
+        }
+      }
+
+      /* === Footer === */
+      .site-footer {
+        background: var(--footer-bg);
+        color: #ccc;
+        margin-top: 4rem;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 3rem;
+        padding: 3rem 1.5rem;
+      }
+      .footer-brand .logo {
+        margin-bottom: 0.75rem;
+      }
+      .footer-brand .logo img {
+        height: 36px;
+      }
+      .footer-brand p {
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+      .site-footer h4 {
+        color: #fff;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .site-footer ul {
+        list-style: none;
+        padding: 0;
+      }
+      .site-footer li {
+        margin-bottom: 0.35rem;
+      }
+      .site-footer a {
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+      .site-footer a:hover {
+        color: var(--orange);
+      }
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .footer-social-icon {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+      .green-hosting {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+      }
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #666;
+      }
+      .footer-bottom a {
+        color: #888;
+      }
+      @media (max-width: 768px) {
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+
+    <script>
+      // === Dark mode toggle with View Transition ===
+      function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+      }
+
+      document.querySelectorAll('.theme-toggle-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const isDark = document.documentElement.dataset.theme === 'dark';
+          const next = isDark ? 'light' : 'dark';
+
+          if (!document.startViewTransition) {
+            applyTheme(next);
+            return;
+          }
+
+          const x = e.clientX;
+          const y = e.clientY;
+          const maxR = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+          );
+
+          const transition = document.startViewTransition(() => applyTheme(next));
+
+          transition.ready.then(() => {
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(0px at ${x}px ${y}px)`,
+                  `circle(${maxR}px at ${x}px ${y}px)`,
+                ],
+              },
+              {
+                duration: 400,
+                easing: 'ease-in-out',
+                pseudoElement: '::view-transition-new(root)',
+              }
+            );
+          });
+        });
+      });
+
+      // === Dropdown menus ===
+      const dropdowns = document.querySelectorAll(".has-dropdown");
+
+      dropdowns.forEach((container) => {
+        const btn = container.querySelector(".dropdown-toggle");
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isOpen = container.classList.contains("is-open");
+          // Close all open dropdowns first
+          dropdowns.forEach((d) => {
+            d.classList.remove("is-open");
+            d.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          });
+          // Toggle the clicked one
+          if (!isOpen) {
+            container.classList.add("is-open");
+            btn.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", (e) => {
+        dropdowns.forEach((d) => {
+          d.classList.remove("is-open");
+          d.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+        });
+
+        const navToggle = document.getElementById("nav-toggle");
+        const mainNav = document.querySelector(".main-nav");
+        const navBurger = document.querySelector(".nav-burger");
+        
+        if (navToggle && navToggle.checked) {
+          if (mainNav && navBurger && !mainNav.contains(e.target) && !navBurger.contains(e.target) && e.target !== navToggle) {
+            navToggle.checked = false;
+          }
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          dropdowns.forEach((d) => {
+            d.classList.remove("is-open");
+            d.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          });
+
+          const navToggle = document.getElementById("nav-toggle");
+          if (navToggle) {
+            navToggle.checked = false;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

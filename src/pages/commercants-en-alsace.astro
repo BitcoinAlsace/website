@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import PageBanner from '../components/PageBanner.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Layout
+  title="Commerçants en Alsace"
+  description="Acceptez Bitcoin dans votre commerce en Alsace. Bitcoin Alsace accompagne gratuitement les commerçants dans l'adoption de Bitcoin."
+>
+  <PageHero title="Commerçants en Alsace" description="Adoptez Bitcoin comme moyen de paiement — nous vous accompagnons gratuitement." />
+
+  <PageBanner src="/images/pages/commercants.webp" alt="Commerçants en Alsace acceptant Bitcoin" />
+
+  <div class="page-content">
+    <div class="container content-layout">
+
+      <article class="prose main-content">
+
+        <h2>Pourquoi accepter Bitcoin ?</h2>
+        <p>
+          Adopter Bitcoin dans son commerce, c'est proposer à ses clients une solution de paiement
+          moderne, rapide et sécurisée.
+        </p>
+        <p>
+          Les transactions en bitcoin offrent instantanéité sans intermédiaires, réduisant frais
+          bancaires et renforçant autonomie financière.
+        </p>
+        <div class="benefits-grid">
+          <div class="benefit card">
+            <span class="benefit-icon">⚡</span>
+            <h3>Paiements instantanés</h3>
+            <p>Les transactions Lightning sont quasi-instantanées, sans intermédiaire bancaire.</p>
+          </div>
+          <div class="benefit card">
+            <span class="benefit-icon">💸</span>
+            <h3>Frais réduits</h3>
+            <p>Éliminez les frais bancaires : pas de terminal de paiement coûteux, pas de commissions élevées.</p>
+          </div>
+          <div class="benefit card">
+            <span class="benefit-icon">🌍</span>
+            <h3>Clientèle internationale</h3>
+            <p>
+              La région Grand-Est accueille ~15M de nuitées par an. Plus de 10% des visiteurs étrangers
+              détiennent des cryptoactifs, Bitcoin représentant plus de 50% de leurs portefeuilles.
+            </p>
+          </div>
+          <div class="benefit card">
+            <span class="benefit-icon">🔒</span>
+            <h3>Autonomie financière</h3>
+            <p>Renforcez votre indépendance vis-à-vis du système bancaire traditionnel.</p>
+          </div>
+        </div>
+
+        <h2>Accepter Bitcoin, en étant accompagné ?</h2>
+
+        <p>
+          Participation gratuite aux <strong>Bitcoin Meetup</strong> avec l'association Bitcoin Alsace.
+          Nos membres vous accompagnent pas à pas.
+        </p>
+        <div class="cta-block">
+          <a href="/evenements" class="btn btn-primary">Voir les prochains meetups</a>
+          <a href="/10-raisons-daccepter-bitcoin-commerce.pdf" class="btn btn-outline" target="_blank">
+            10 raisons d'accepter Bitcoin (PDF)
+          </a>
+          <a href="/comment-accepter-bitcoin-commerce.pdf" class="btn btn-outline" target="_blank">
+            Bitcoin pour commerçants (PDF)
+          </a>
+        </div>
+
+        <h2>Accepter Bitcoin facilement, en solo ?</h2>
+        <div class="video-grid">
+          <div class="video-wrapper">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/SV31giIRCQE?si=9xdA5CBbhcFw9SkK" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="video-wrapper">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/shFrvvbuwgU?si=ItDTGHiy2eRM5U_D" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <p>Deux solutions clé en main pour accepter Bitcoin :</p>
+        <div class="solutions-grid">
+          <div class="solution card">
+            <h4>Swiss Bitcoin Pay</h4>
+            <p>
+              Idéal pour les transactions en magasin. Permet une conversion partielle en euros.
+              Simple à configurer sur smartphone ou tablette.
+            </p>
+            <a href="https://swiss-bitcoin-pay.ch/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              En savoir plus →
+            </a>
+          </div>
+          <div class="solution card">
+            <h4>Swiss Bitcoin Pay (plugin)</h4>
+            <p>
+              Plugin disponible pour WooCommerce et d'autres plateformes e-commerce.
+              Pour vos ventes en ligne.
+            </p>
+            <a href="https://swiss-bitcoin-pay.ch/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              En savoir plus →
+            </a>
+          </div>
+        </div>
+
+        <h2>Carte des commerces acceptant Bitcoin</h2>
+        <p>
+          Chaque achat local soutient une économie inclusive, circulaire, valorisant souveraineté,
+          transparence et indépendance financière.
+        </p>
+        <div style="margin: 1.5rem 0;">
+          <iframe loading="lazy" width="100%" height="400" id="btcmap" title="BTC Map" allowfullscreen="allowfullscreen" allow="geolocation" src="https://btcmap.org/map#8/48.46928/7.42950" style="border: none; border-radius: 8px;"></iframe>
+        </div>
+        <p>
+          <strong>Commerçants ou clients potentiel ?</strong>
+          <br />
+          <a href="https://btcmap.org/add-location" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: 0.5rem; display: inline-block;">
+            Ajouter un lieu à la carte BTCMap
+          </a>
+        </p>
+
+      </article>
+
+      <aside class="sidebar">
+        <div class="card sidebar-card">
+          <h3>Ressources commerçants</h3>
+          <ul class="download-list">
+            <li>
+              <a href="/10-raisons-daccepter-bitcoin-commerce.pdf" target="_blank">
+                📄 10 raisons d'accepter Bitcoin
+              </a>
+            </li>
+            <li>
+              <a href="/comment-accepter-bitcoin-commerce.pdf" target="_blank">
+                📄 Bitcoin pour commerçants
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Nous contacter</h3>
+          <p style="font-size:0.9rem;color:var(--gray);margin-bottom:1rem;">
+            Vous souhaitez accepter Bitcoin ? Contactez-nous, nous vous aidons gratuitement.
+          </p>
+          <SocialLinks hideRss={true} />
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+  }
+
+  .sidebar-card { margin-bottom: 1.5rem; }
+  .sidebar-card h3 {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 600px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+  .benefit { text-align: center; }
+  .benefit-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+  .benefit h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .benefit p { font-size: 0.875rem; color: var(--gray); }
+
+  .cta-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+
+  .video-grid,
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin: 1.25rem 0;
+  }
+  @media (max-width: 600px) {
+    .video-grid,
+    .solutions-grid { grid-template-columns: 1fr; }
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .solution h4 { margin-bottom: 0.5rem; }
+  .solution p { font-size: 0.875rem; color: var(--gray); margin-bottom: 1rem; }
+
+  .download-list { list-style: none; padding: 0; }
+  .download-list li { margin-bottom: 0.5rem; }
+  .download-list a { font-size: 0.9rem; }
+</style>

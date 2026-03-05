@@ -1,0 +1,303 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const images = [
+  { src: "/images/events/shadok2026/ems_stage01_LowRes.webp", thumb: "/images/events/shadok2026/ems_stage01_LowRes-thumbnail.webp", alt: "Scène de la conférence" },
+  { src: "/images/events/shadok2026/ems_stage02_LowRes.webp", thumb: "/images/events/shadok2026/ems_stage02_LowRes-thumbnail.webp", alt: "Scène de la conférence" },
+  { src: "/images/events/shadok2026/ems_stage03_LowRes.webp", thumb: "/images/events/shadok2026/ems_stage03_LowRes-thumbnail.webp", alt: "Scène de la conférence" },
+  { src: "/images/events/shadok2026/ems_stage05_LowRes.webp", thumb: "/images/events/shadok2026/ems_stage05_LowRes-thumbnail.webp", alt: "Scène de la conférence" },
+  { src: "/images/events/shadok2026/ems_stage04_LowRes.webp", thumb: "/images/events/shadok2026/ems_stage04_LowRes-thumbnail.webp", alt: "Scène de la conférence" },
+  { src: "/images/events/shadok2026/ladyTimeJane_art1_LowRes.webp", thumb: "/images/events/shadok2026/ladyTimeJane_art1_LowRes-thumbnail.webp", alt: "Œuvre de Lady Time Jane" },
+  { src: "/images/events/shadok2026/ladyTimeJane_art2_LowRes.webp", thumb: "/images/events/shadok2026/ladyTimeJane_art2_LowRes-thumbnail.webp", alt: "Œuvre de Lady Time Jane" },
+  { src: "/images/events/shadok2026/bitcoinAlsace_Bar_Shadok.webp", thumb: "/images/events/shadok2026/bitcoinAlsace_Bar_Shadok-thumbnail.webp", alt: "Bitcoin Alsace au Bar Shadok" },
+  { src: "/images/events/shadok2026/ems_screen_LR.webp", thumb: "/images/events/shadok2026/ems_screen_LR-thumbnail.webp", alt: "Écran de la conférence" },
+];
+---
+
+<Layout
+  title="Conférence Annuelle"
+  description="Conférence annuelle de Bitcoin Alsace sur la cryptomonnaie à Strasbourg, en partenariat avec l'Eurométropole de Strasbourg."
+>
+  <PageHero title="🗣️ Conférence Annuelle" description="Chaque année, Bitcoin Alsace organise une grande conférence publique à Strasbourg." />
+
+  <div class="container page-content">
+
+    <p>
+      Pour son lancement, l'association Bitcoin Alsace a souhaité être l'un des partenaires de la
+      <a href="https://conference-cryptomonnaie.eu/" rel="noopener noreferrer" target="_blank">conférence de Strasbourg sur la cryptomonnaie</a>,
+      organisée par l'<a href="https://www.strasbourg.eu" rel="noopener noreferrer" target="_blank">Eurométropole de Strasbourg</a>.
+    </p>
+
+    <p>
+      Emprunt de succès, l'association souhaite pérenniser annuellement ce type de format.<br />
+      <strong>Envie d'intervenir ou d'être partenaire de la prochaine édition ?</strong><br />
+      <a href="contact" class="btn btn-primary">
+        Nous contacter
+      </a>
+    </p>
+
+    <div class="gallery">
+      {images.map((img, i) => (
+        <button class="gallery-item" data-index={i} aria-label={`Agrandir : ${img.alt}`}>
+          <img src={img.thumb} alt={img.alt} loading="lazy" />
+        </button>
+      ))}
+    </div>
+
+    <section class="conf-section">
+      <h2>Intervenants 2026</h2>
+      <ul class="speakers-list">
+        <li>Alexandre Stachtchtenko</li>
+        <li>Mathieu Honold</li>
+        <li>ProfEduStream</li>
+        <li>Carole Tawema</li>
+        <li>BobAlban</li>
+        <li>Quentin Bramas</li>
+        <li>Florent Gabriel</li>
+        <li>Rémy Guichardaz</li>
+        <li>Lionel Jeannerat</li>
+        <li>Maël Rolland</li>
+        <li>Alexis Roussel</li>
+        <li>Hugo Spiess</li>
+        <li>Pia Imbs</li>
+      </ul>
+      <p><strong>Animation :</strong>Caroline Zorn, Faune, Julien</p>
+      <p><strong>Artiste :</strong> Lady Time Jane</p>
+    </section>
+
+    <section class="conf-section">
+      <h2>Partenaires 2026</h2>
+      <p class="partners">
+        Le Cercle Du Coin &middot; Shadok &middot; NYM VPN &middot; Cinéma Le Cosmos &middot;
+        Plan B Network &middot; be-BOP &middot; Blobb &middot; Bitcoin Alsace
+      </p>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-label="Vue agrandie">
+    <button class="lb-close" id="lb-close" aria-label="Fermer">&times;</button>
+    <button class="lb-prev" id="lb-prev" aria-label="Image précédente">&#8249;</button>
+    <button class="lb-next" id="lb-next" aria-label="Image suivante">&#8250;</button>
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="" />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .page-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .gallery-item {
+    display: block;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: zoom-in;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+
+  /* Sections */
+  .conf-section {
+    margin-top: 2.5rem;
+  }
+
+  .conf-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .speakers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.35rem 1.5rem;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .partners {
+    font-size: 1.05rem;
+    color: var(--gray);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.is-open {
+    display: flex;
+  }
+
+  .lb-img-wrap {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lb-img-wrap img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+  }
+
+  .lb-close,
+  .lb-prev,
+  .lb-next {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .lb-close:hover,
+  .lb-prev:hover,
+  .lb-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .lb-close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .lb-prev {
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+  }
+
+  .lb-next {
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+  }
+</style>
+
+<script>
+  const images = [
+    { src: "/images/events/shadok2026/ems_stage01_LowRes.webp", alt: "Scène de la conférence" },
+    { src: "/images/events/shadok2026/ems_stage02_LowRes.webp", alt: "Scène de la conférence" },
+    { src: "/images/events/shadok2026/ems_stage03_LowRes.webp", alt: "Scène de la conférence" },
+    { src: "/images/events/shadok2026/ems_stage05_LowRes.webp", alt: "Scène de la conférence" },
+    { src: "/images/events/shadok2026/ems_stage04_LowRes.webp", alt: "Scène de la conférence" },
+    { src: "/images/events/shadok2026/ladyTimeJane_art1_LowRes.webp", alt: "Œuvre de Lady Time Jane" },
+    { src: "/images/events/shadok2026/ladyTimeJane_art2_LowRes.webp", alt: "Œuvre de Lady Time Jane" },
+    { src: "/images/events/shadok2026/bitcoinAlsace_Bar_Shadok.webp", alt: "Bitcoin Alsace au Bar Shadok" },
+    { src: "/images/events/shadok2026/ems_screen_LR.webp", alt: "Écran de la conférence" },
+  ];
+
+  let current = 0;
+
+  const lightbox = document.getElementById("lightbox")!;
+  const lbImg = document.getElementById("lb-img") as HTMLImageElement;
+  const lbClose = document.getElementById("lb-close")!;
+  const lbPrev = document.getElementById("lb-prev")!;
+  const lbNext = document.getElementById("lb-next")!;
+
+  function openLightbox(index: number) {
+    current = index;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].alt;
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  function showPrev() {
+    current = (current - 1 + images.length) % images.length;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].alt;
+  }
+
+  function showNext() {
+    current = (current + 1) % images.length;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].alt;
+  }
+
+  document.querySelectorAll(".gallery-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = parseInt((btn as HTMLElement).dataset.index ?? "0", 10);
+      openLightbox(index);
+    });
+  });
+
+  lbClose.addEventListener("click", closeLightbox);
+  lbPrev.addEventListener("click", showPrev);
+  lbNext.addEventListener("click", showNext);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") showPrev();
+    if (e.key === "ArrowRight") showNext();
+  });
+</script>

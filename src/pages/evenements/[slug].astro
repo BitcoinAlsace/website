@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events', ({ data }) => !data.draft);
+  return events.map(event => ({
+    params: { slug: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+
+const categoryLabels = {
+  meetup: '🤝 Bitcoin Meetup',
+  conference: '🗣️ Conférence',
+  actu: '🎭 Actualité',
+  autre: '📅 Événement',
+};
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+const isUpcoming = event.data.date >= new Date();
+---
+<Layout
+  title={event.data.title}
+  description={event.data.description ?? `${event.data.title} — Bitcoin Alsace`}
+>
+  <PageHero title={event.data.title}>
+    <div class="event-meta-top" slot="before-title">
+      <span class={`badge badge-${event.data.category}`}>{categoryLabels[event.data.category]}</span>
+      {isUpcoming && <span class="badge-upcoming">À venir</span>}
+    </div>
+    <div class="event-info">
+      <time datetime={event.data.date.toISOString()}>
+        📅 {formatDate(event.data.date)}{event.data.endDate ? ` – ${formatDate(event.data.endDate)}` : ''}
+      </time>
+      {event.data.location && <span>📍 {event.data.location}</span>}
+      {event.data.free && <span class="free-badge">Gratuit</span>}
+      {!event.data.free && event.data.price !== undefined && <span>💰 {event.data.price}€</span>}
+    </div>
+  </PageHero>
+
+  <div class="page-content">
+    <div class="container content-layout">
+
+      <article class="prose event-content">
+        {event.data.image && (
+          <img src={event.data.image.replace('.webp', '-sq.webp')} alt={event.data.title} class="event-cover" />
+        )}
+        <Content />
+
+        {event.data.registrationUrl && (
+          <div class="register-cta">
+            <a href={event.data.registrationUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              ⚡ S'inscrire / Rejoindre
+            </a>
+          </div>
+        )}
+      </article>
+
+      <aside class="sidebar">
+        <div class="card sidebar-card">
+          <h3>Détails</h3>
+          <dl class="details-list">
+            <dt>Date</dt>
+            <dd>
+              <time datetime={event.data.date.toISOString()}>{formatDate(event.data.date)}</time>
+              {event.data.endDate && (
+                <>
+                  <br />→ <time datetime={event.data.endDate.toISOString()}>{formatDate(event.data.endDate)}</time>
+                </>
+              )}
+            </dd>
+            {event.data.location && (
+              <>
+                <dt>Lieu</dt>
+                <dd>{event.data.location}</dd>
+              </>
+            )}
+            <dt>Tarif</dt>
+            <dd>{event.data.free ? 'Gratuit' : event.data.price !== undefined ? `${event.data.price}€` : 'Voir détails'}</dd>
+            <dt>Catégorie</dt>
+            <dd>{categoryLabels[event.data.category]}</dd>
+          </dl>
+
+          {event.data.registrationUrl && (
+            <a href={event.data.registrationUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:1rem;display:block;text-align:center;">
+              S'inscrire
+            </a>
+          )}
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Tous les événements</h3>
+          <a href="/evenements" class="btn btn-outline" style="display:block;text-align:center;">
+            ← Retour aux événements
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .event-meta-top {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .badge-upcoming {
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: var(--gray);
+  }
+  .free-badge {
+    background: var(--orange-light);
+    color: var(--orange-dark);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+  }
+
+  .event-cover {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius, 8px);
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .event-content { line-height: 1.75; }
+  .register-cta { margin-top: 2rem; }
+
+  .sidebar-card { margin-bottom: 1.5rem; }
+  .sidebar-card h3 {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+
+  .details-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
+  .details-list dt { font-weight: 600; color: var(--gray); font-size: 0.85rem; }
+  .details-list dd { font-size: 0.9rem; }
+</style>

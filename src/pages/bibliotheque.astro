@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import PageBanner from '../components/PageBanner.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Layout
+  title="Bibliothèque"
+  description="Ressources recommandées par Bitcoin Alsace : livres, podcasts, documents sur Bitcoin et les cryptomonnaies. Accès gratuit en Alsace."
+>
+  <PageHero title="Bibliothèque" description="Découvrez des livres, podcasts et DVD à emprunter gratuitement !" />
+
+  <PageBanner src="/images/pages/Bitcoin_Alsace_Bibliotheque-2.webp" alt="Bibliothèque Bitcoin Alsace" />
+
+  <div class="page-content">
+    <div class="container content-layout">
+
+      <article class="prose main-content">
+
+        <p class="intro-lead">L'éducation, de 7 à 77 ans</p>
+        <p>
+          Blockchain, décentralisation, Bitcoin, cryptomonnaies… Plongez dans le terrier du savoir !
+        </p>
+        <p>
+          Quelques recommandations — livres, podcasts et DVDs à emprunter gratuitement,
+          pour tous les âges et tous les niveaux.
+        </p>
+
+        <h2>Bibliothèques publiques en Alsace</h2>
+
+        <h3>Bas-Rhin</h3>
+        <ul>
+          <li>
+            <strong>Bibliothèque nationale et universitaire de Strasbourg (BNU)</strong>
+            <br />
+            <a href="https://biblio.bnu.fr/opac/query/bitcoin?context=catalogo" class="doc-link" target="_blank" style="margin-left: 0; margin-top: 0.5rem; display: inline-block;">📚 Consulter le catalogue</a>
+          </li>
+          <li style="margin-top: 1rem;">
+            <strong>Médiathèques Eurométropole de Strasbourg</strong>
+            <br />
+            <a href="https://www.mediatheques.strasbourg.eu/search.aspx?SC=PUBLIC&QUERY=bitcoin&QUERY_LABEL=#/Search/(query:(InitialSearch:!t,Page:0,PageRange:3,QueryString:bitcoin,ResultSize:-1,ScenarioCode:PUBLIC,SearchContext:0,SearchLabel:''))" class="doc-link" target="_blank" style="margin-left: 0; margin-top: 0.5rem; display: inline-block;">📚 Consulter le catalogue</a>
+          </li>
+        </ul>
+
+        <h3>Haut-Rhin</h3>
+        <ul>
+          <li>
+            <strong>Bibliothèques de Mulhouse</strong>
+            <br />
+            <a href="https://bibliotheques.mulhouse.fr/recherche/simple/expressionRecherche/bitcoin/tri/%2A" class="doc-link" target="_blank" style="margin-left: 0; margin-top: 0.5rem; display: inline-block;">📚 Consulter le catalogue</a>
+          </li>
+          <li style="margin-top: 1rem;">
+            <strong>Université Haute-Alsace — Learning Center</strong>
+            <br />
+            <a href="https://www.learning-center.uha.fr/opac/query/bitcoin?context=catalogo" class="doc-link" target="_blank" style="margin-left: 0; margin-top: 0.5rem; display: inline-block;">📚 Consulter le catalogue</a>
+          </li>
+        </ul>
+
+        <h2>Quelques recommandations</h2>
+        <h3>Pour les débutants</h3>
+        <ol class="book-list">
+          <li>
+            <strong>« L'élégance de Bitcoin »</strong> — Ludovic Lars
+            <span class="book-note">Lecture gratuite en ligne disponible</span>
+          </li>
+          <li>
+            <strong>« L'étalon-bitcoin »</strong> — Saifedean Ammous
+            <span class="book-note">Traduit par Marie Oneissi</span>
+          </li>
+          <li>
+            <strong>« Alice au pays des cryptos »</strong> — Daniel Villa Monteiro &amp; Nicolas Balas
+          </li>
+          <li>
+            <strong>« Cryptomonnaies facile »</strong> — Claire Balva &amp; Alexandre Stachtchenko
+          </li>
+          <li>
+            <strong>« Le petit livre des cryptomonnaies »</strong> — Stanislas Barthélémi
+          </li>
+        </ol>
+
+        <h3>Pour les plus curieux</h3>
+        <ol class="book-list">
+          <li>
+            <strong>« La guerre des blocs »</strong> — Jonathan Bier
+          </li>
+          <li>
+            <strong>« J'ai vendu mon âme en bitcoins »</strong> — Jake Adelstein
+          </li>
+          <li>
+            <strong>« Bitcoinica »</strong> — Ali Mitchell
+          </li>
+          <li>
+            <strong>Bitcoin Whitepaper</strong> — Satoshi Nakamoto
+            <a href="/bitcoin.pdf" class="doc-link" target="_blank">Télécharger (PDF)</a>
+          </li>
+          <li>
+            <strong>« Cypherpunks » — Le Manifeste</strong> — Eric Hughes, 1993
+            <a href="/cypherpunks-manifesto-fr.pdf" class="doc-link" target="_blank">Télécharger (PDF)</a>
+          </li>
+        </ol>
+
+        <h2>Plan ₿ Academy</h2>
+        <p>
+          La <a href="https://planb.academy/fr/" target="_blank" rel="noopener noreferrer">Plan ₿ Academy</a>
+          propose des formations en ligne gratuites et de qualité sur Bitcoin, du niveau débutant à expert.
+        </p>
+
+      </article>
+
+      <aside class="sidebar">
+        <div class="card sidebar-card">
+          <h3>Nous contacter</h3>
+          <p style="font-size:0.9rem;color:var(--gray);margin-bottom:1rem;">
+            Une question sur notre bibliothèque ou envie de proposer une ressource ?
+          </p>
+          <SocialLinks hideRss={true} />
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Ressources à télécharger</h3>
+          <ul class="download-list">
+            <li>
+              <a href="/bitcoin.pdf" target="_blank">
+                📄 Bitcoin Whitepaper (FR)
+              </a>
+            </li>
+            <li>
+              <a href="/cypherpunks-manifesto-fr.pdf" target="_blank">
+                📄 Manifeste Cypherpunks (FR)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+
+
+  .intro-lead { font-size: 1.2rem; font-weight: 700; color: var(--black); margin-bottom: 0.25rem; }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .content-layout { grid-template-columns: 1fr; }
+  }
+
+  .sidebar-card { margin-bottom: 1.5rem; }
+  .sidebar-card h3 {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+
+  .book-list { padding-left: 1.25rem; margin-bottom: 1.5rem; }
+  .book-list li { margin-bottom: 0.6rem; line-height: 1.4; }
+  .book-note {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--gray);
+    font-style: italic;
+  }
+  .doc-link {
+    margin-left: 0.5rem;
+    font-size: 0.82rem;
+    background: var(--orange-light);
+    color: var(--orange-dark);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .download-list { list-style: none; padding: 0; }
+  .download-list li { margin-bottom: 0.5rem; }
+  .download-list a { font-size: 0.9rem; }
+</style>
