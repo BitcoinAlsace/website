@@ -1,6 +1,6 @@
 ---
 title: "Preuve de travail et énergie : gaspillage ou coup de génie ?"
-date: 2026-03-11 19:30:00
+date: 2026-03-11
 category: meetup
 image: "/images/events/meetup-2026-03.webp"
 description: "Le 2e mercredi de mars : on décortique la preuve de travail (Proof of Work) et la question de sa consommation énergétique."
@@ -18,4 +18,4 @@ Venez débattre, questionner, apprendre.
 ### Infos pratiques
 
 - **Gratuit**, sans inscription préalable
-- Rendez-vous au bar La Perestroïka le mercredi 11 mars à 19h30. Le bar est à deux pas de la gare de Strasbourg, 2 rue Thiergarten
+- Rendez-vous au bar *La Perestroïka* le mercredi 11 mars à 19h30. Le bar est à deux pas de la gare de Strasbourg, 2 rue Thiergarten
