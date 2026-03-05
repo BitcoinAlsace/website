@@ -18,4 +18,4 @@ Venez débattre, questionner, apprendre.
 ### Infos pratiques
 
 - **Gratuit**, sans inscription préalable
-- Rendez-vous au bar *La Perestroïka* le mercredi 11 mars à 19h30. Le bar est à deux pas de la gare de Strasbourg, 2 rue Thiergarten
+- Rendez-vous au bar *La Perestroïka* le mercredi 11 mars à 19h30. Le bar est à deux pas de la gare de Strasbourg, 2 rue Thiergarten.
