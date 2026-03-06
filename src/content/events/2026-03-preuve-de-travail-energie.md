@@ -1,6 +1,6 @@
 ---
 title: "Preuve de travail et énergie : gaspillage ou coup de génie ?"
-date: 2026-03-11 19:30:00
+date: 2026-03-11 19:30
 category: meetup
 image: "/images/events/meetup-2026-03.webp"
 description: "Le 2e mercredi de mars : on décortique la preuve de travail (Proof of Work) et la question de sa consommation énergétique."
