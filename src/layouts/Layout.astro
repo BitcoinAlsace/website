@@ -13,7 +13,7 @@ const {
   ogImage,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL(ogImage ?? '/logo-fondBlanc-ligne.webp', Astro.site).toString();
+const ogImageURL = new URL(ogImage ?? '/og-default.png', Astro.site).toString();
 const ogTitle = `${title} | Bitcoin Alsace`;
 ---
 
