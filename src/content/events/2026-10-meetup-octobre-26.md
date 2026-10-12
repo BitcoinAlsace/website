@@ -10,7 +10,7 @@ urlText: "Rejoignez-nous sur Telegram"
 free: true
 ---
 
-Comme tous les mois, retrouvez-nous pour le meetup mensuel de l’association Bitcoin Alsace ! Notre lieu habituel étant toujours en travaux, nous continuons notre errance. Rendez-vous au “Bravo !”. N'hésitez pas à jeter un œil sur Telegram au moment de l'événement, ça reste le meilleur moyen de nous trouver.
+Comme tous les mois, retrouvez-nous pour le meetup mensuel de l’association Bitcoin Alsace ! Notre lieu habituel étant toujours en travaux, nous continuons notre errance. Rendez-vous au [“Bravo !”](https://bravo.alsace/). N'hésitez pas à jeter un œil sur Telegram au moment de l'événement, ça reste le meilleur moyen de nous trouver.
 
 
 ### Infos pratiques
